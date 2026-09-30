@@ -1,0 +1,1 @@
+- [Next dev workflow handoff](next-dev-workflow-handoff.md) — removing a Replit workflow may leave its Next child process alive and holding the shared `.next` lock.

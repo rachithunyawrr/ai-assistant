@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Rachit's Assistant"
+description = "A single-page personal AI chat app for Rachit, powered by Groq with streaming replies and saved conversations."
+version = "1.0.0"
+id = "artifacts/rachits-assistant"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/", "/_next/hmr" ]
+localPort = 23935
+
+[services.development]
+run = "pnpm --filter @workspace/rachits-assistant run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/rachits-assistant", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/rachits-assistant/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23935"
+BASE_PATH = "/"
