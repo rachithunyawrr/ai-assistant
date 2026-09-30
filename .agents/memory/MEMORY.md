@@ -1,1 +1,2 @@
 - [Next dev workflow handoff](next-dev-workflow-handoff.md) — removing a Replit workflow may leave its Next child process alive and holding the shared `.next` lock.
+- [Next dev preview origins](next-dev-preview-origins.md) — Replit's proxied origins must be allowed by Next.js or hydration and HMR can fail.
