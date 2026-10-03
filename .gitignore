@@ -54,4 +54,8 @@ Thumbs.db
 # Next.js local tooling state (telemetry ids, dev config)
 /.config/
 next-env.d.ts
+
+# Vercel
+# Note: `.env*` and `!.env.example` are already handled near the top of this
+# file. Do not re-add `.env*` below, or it would shadow that negation.
 .vercel

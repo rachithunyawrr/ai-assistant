@@ -1,0 +1,15 @@
+# Never upload local secret files to Vercel.
+# Without this, `.env` is included in the deployment upload and gets loaded
+# during the build (Vercel logs "Environments: .env"). Vercel env vars
+# (vercel env add) are the source of truth for deployed builds.
+.env
+.env.*
+!.env.example
+.env.local
+
+# Local Vercel project state
+.vercel
+
+# Next.js local tooling state
+/.config/
+next-env.d.ts
