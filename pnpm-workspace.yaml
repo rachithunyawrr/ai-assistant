@@ -74,6 +74,22 @@ onlyBuiltDependencies:
   - msw
   - unrs-resolver
 
+# pnpm 11+ supersedes `onlyBuiltDependencies` with `allowBuilds`. Without this,
+# the esbuild postinstall is treated as "unreviewed" and pnpm aborts the whole
+# install with ERR_PNPM_IGNORED_BUILDS — which fails `pnpm install` on CI/Vercel
+# where the interactive `pnpm approve-builds` prompt cannot be answered.
+allowBuilds:
+  '@swc/core': true
+  esbuild: true
+  msw: true
+  unrs-resolver: true
+
+# Don't auto-run a full workspace `pnpm install` before `pnpm run <script>`.
+# The web app at the repo root only needs the root dependencies; without this,
+# `pnpm build` re-installs all 9 workspace projects first (artifacts/, lib/*,
+# scripts) and fails on their build scripts.
+verifyDepsBeforeRun: false
+
 overrides:
   # replit uses linux-x64 only, we can exclude all other platforms
   "esbuild>@esbuild/darwin-arm64": "-"
